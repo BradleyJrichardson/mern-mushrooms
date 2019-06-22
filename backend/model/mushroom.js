@@ -12,7 +12,7 @@ const mushSchema = new mongoose.Schema({
   },
   edible: {
     type: Boolean,
-    required: true
+    required: false
   },
   undercap_type: {
     type: String,

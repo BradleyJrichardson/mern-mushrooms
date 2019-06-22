@@ -5,6 +5,8 @@ const mongoURI = process.env.MONGO_PROD;
 const app = new express();
 const axios = require("axios");
 const cors = require("cors");
+const { scrape } = require("./webscraper/webscraper");
+
 app.use(cors());
 
 // database connection
@@ -27,16 +29,25 @@ app.get("/mushroom", (req, res) => {
       "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Suillus_luteus"
     )
     .then(response => {
-      const data = response.data.lead;
-      const binomial_name = data.normalizedtitle;
-      const description = data.description;
-      const image = data.image.urls[800];
-      console.log(binomial_name);
-      console.log(description);
-      console.log(image);
+      const data = response.data;
+      const binomial_name = data.lead.normalizedtitle;
+      const description = data.lead.description;
+      const image = data.lead.image.urls[800];
+      let edible;
 
-      const blockToParse = data.sections[0].text;
-      console.log(blockToParse);
+      if (description.indexOf("edible") >= 0) {
+        edible = true;
+      } else {
+        edible = false;
+      }
+
+      section0 = data.lead.sections[0].text;
+      section1 = data.remaining.sections[0].text;
+      const blockToParse = section0 + section1;
+      const cleanedMushroom = scrape(blockToParse);
+      console.log(cleanedMushroom);
+      const string = blockToParse.replace(/<[^>]*>?/gm, "");
+      console.log(string);
     })
     .catch(err => {
       console.log(err);
