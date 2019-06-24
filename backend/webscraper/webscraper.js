@@ -9,7 +9,8 @@ const scrape = dirtyData => {
     division: $(".division").text(),
     class: $(".class").text(),
     order: $(".order").text(),
-    family: $(".family").text()
+    family: $(".family").text(),
+    mycology: $(".infobox").text()
   };
 };
 
