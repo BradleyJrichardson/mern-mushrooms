@@ -11,9 +11,9 @@ const findbyid = (req, res) => {
   const { id } = req.params;
   mushroom
     .findOne({ id: id })
-    .then(poke => {
-      console.log(poke);
-      return res.json(poke);
+    .then(doc => {
+      console.log(doc);
+      return res.json(doc);
     })
     .catch(err => res.json(err));
 };
@@ -22,9 +22,9 @@ const findbyname = (req, res) => {
   const { name } = req.params;
   mushroom
     .findOne({ name: name })
-    .then(poke => {
-      console.log(poke);
-      return res.json(poke);
+    .then(doc => {
+      console.log(doc);
+      return res.json(doc);
     })
     .catch(err => res.json(err));
 };
@@ -33,8 +33,8 @@ const addone = (req, res) => {
   const { id, name, height, weight, moves } = req.body;
   mushroom
     .create({ id, name, height, weight, moves })
-    .then(newPoke => {
-      res.json(newPoke);
+    .then(newdoc => {
+      res.json(newdoc);
     })
     .catch(err => res.json(err));
 };
@@ -53,9 +53,9 @@ const addmoves = (req, res) => {
   console.log(req.body.moves);
   mushroom
     .findOne({ id })
-    .then(poke => {
-      poke.moves = poke.moves.concat(req.body.moves);
-      poke
+    .then(doc => {
+      doc.moves = doc.moves.concat(req.body.moves);
+      doc
         .save()
         .then(doc => res.send(`${doc.name} has been updated`))
         .catch(error => console.log(error));

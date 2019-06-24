@@ -64,44 +64,31 @@ app.get("/mushroom", (req, res) => {
 
       const cleanedMushroom = scrape(blockToParse);
       const mycology = cleanedMushroom.mycology;
-
       const startIndex = mycology.indexOf("Mycological characteristic");
-      const slicedgoodness = mycology.slice(startIndex);
+      const slicedMycology = mycology.slice(startIndex);
+      console.log(slicedMycology);
 
-      const headerIndex = mycology.indexOf("spores");
-      const header = mycology.slice(startIndex, headerIndex);
+      const indexOfEnd = (string, slicedMycology) => {
+        var io = slicedMycology.indexOf(string);
+        return io == -1 ? -1 : io + string.length;
+      };
 
-      const sporesindex = mycology.indexOf("cap");
-      const hymeniumSporeType = mycology.slice(headerIndex, sporesindex);
-
-      const capindex = nthIndex(mycology, "hymenium", 2);
-      const cap = mycology.slice(sporesindex, capindex);
-
-      /// -------------------
-      const sporeindex = mycology.indexOf("ecology");
-      const sporeIndexTwo = nthIndex(mycology, "spore", 2);
-      const sporeType = mycology.slice(sporeIndexTwo, sporeindex);
-
-      const ecologyindex = mycology.indexOf("edibility");
-      const ecology = mycology.slice(sporeindex, ecologyindex);
-
-      const edibility = mycology.slice(ecologyindex);
-
-      // slice from hymenium 2 to stpe
-      const hymeniumShapeIndex = nthIndex(mycology, "hymenium", 2);
-      const stipe = indexOf("stipe");
-      const hymeniumShape = mycology.slice(hymeniumShapeIndex, stipe);
-      console.log(header);
-      console.log(hymeniumSporeType);
-      console.log(cap);
-      console.log(sporeType);
-      console.log(stipe);
-      console.log(ecology);
-      console.log(edibility);
-      console.log("------");
-      console.log(slicedgoodness);
-      // console.log(slicedgoodness);
+      const lastIndexOfHeader = indexOfEnd(
+        "Mycological characteristic",
+        slicedMycology
+      );
+      console.log(lastIndexOfHeader);
     })
+
+    /// Mycological characteristic
+    // spores on hymenium
+    // cap is convex
+    // hymenium is adnate or subdecurrent
+    // stipe has a ring
+    // spore print is brown
+    // ecology is mycorrhizal
+    // edibility: edible
+
     .catch(err => {
       console.log(err);
     });
