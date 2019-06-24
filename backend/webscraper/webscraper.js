@@ -6,7 +6,7 @@ const scrape = dirtyData => {
   // jsonframe($);
 
   const mycology = $(".infobox").text();
-
+  console.log(mycology);
   const startIndex = mycology.indexOf("Mycological characteristics");
   const slicedMycology = mycology.slice(startIndex);
 

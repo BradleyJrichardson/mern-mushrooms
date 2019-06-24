@@ -36,31 +36,21 @@ app.get("/mushroom", (req, res) => {
       const result = operation.filter(obj => {
         return obj.line === "Description";
       });
-      const description = result[0].text;
+      const dirtyDescription = result[0].text;
 
-      const paragraphs = description.match(/<p>(.*?)<\/p>/g).map(val => {
+      const description = dirtyDescription.match(/<p>(.*?)<\/p>/g).map(val => {
         return val
           .replace(/<[^>]*>?/gm, "")
           .replace(/&nbsp;/gm, "")
           .replace(/\n/gm, "")
           .replace(/ *\[[^)]*\] */g, "");
       });
-
-      // console.log(description);
-      console.log(paragraphs);
-
       blockToParse =
         data.lead.sections[0].text + data.remaining.sections[0].text;
       const processedMushroom = scrape(blockToParse);
 
-      // description actually changes position for different mushrooms so will have to work out another way
-      // const dirtyDescription = data.remaining.sections[0].text;
-      // const description = result[0].text;
-      //   .replace(/<[^>]*>?/gm, "")
-      //   .replace(/&nbsp;/gm, "")
-      //   .replace(/\n/gm, "");
-      // processedMushroom.description = description;
-      // console.log(processedMushroom);
+      processedMushroom.description = description;
+      console.log(processedMushroom);
     })
 
     .catch(err => {
