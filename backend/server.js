@@ -26,29 +26,41 @@ mongoose
 app.get("/mushroom", (req, res) => {
   axios
     .get(
-      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Suillus_luteus"
+      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Amanita_muscaria"
     )
     .then(response => {
       const data = response.data;
-      const binomial_name = data.lead.normalizedtitle;
-      const description = data.lead.description;
       const image = data.lead.image.urls[800];
-      let edible;
 
-      // this method is most definately a health and safety concern!
-      if (description.indexOf("edible") >= 0) {
-        edible = true;
-      } else {
-        edible = false;
-      }
+      const operation = data.remaining.sections;
+      const result = operation.filter(obj => {
+        return obj.line === "Description";
+      });
+      const description = result[0].text;
 
-      section0 = data.lead.sections[0].text;
-      section1 = data.remaining.sections[0].text;
-      section2 = data.remaining.sections[1].text;
-      section3 = data.remaining.sections[2].text;
-      const blockToParse = section0 + section1 + section2 + section3;
+      const paragraphs = description.match(/<p>(.*?)<\/p>/g).map(val => {
+        return val
+          .replace(/<[^>]*>?/gm, "")
+          .replace(/&nbsp;/gm, "")
+          .replace(/\n/gm, "")
+          .replace(/ *\[[^)]*\] */g, "");
+      });
+
+      // console.log(description);
+      console.log(paragraphs);
+
+      blockToParse =
+        data.lead.sections[0].text + data.remaining.sections[0].text;
       const processedMushroom = scrape(blockToParse);
-      console.log(processedMushroom);
+
+      // description actually changes position for different mushrooms so will have to work out another way
+      // const dirtyDescription = data.remaining.sections[0].text;
+      // const description = result[0].text;
+      //   .replace(/<[^>]*>?/gm, "")
+      //   .replace(/&nbsp;/gm, "")
+      //   .replace(/\n/gm, "");
+      // processedMushroom.description = description;
+      // console.log(processedMushroom);
     })
 
     .catch(err => {
