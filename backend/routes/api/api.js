@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const { scrape } = require("./webscraper");
 const router = express.Router();
-const mushroom = require("../model/mushroom");
+const Mushroom = require("../../model/mushroom");
 
 router.get("/pullmushroom", (req, res) => {
   axios
@@ -29,19 +29,36 @@ router.get("/pullmushroom", (req, res) => {
       blockToParse =
         data.lead.sections[0].text + data.remaining.sections[0].text;
       const processedMushroom = scrape(blockToParse);
-
       processedMushroom.description = description[0];
       console.log(processedMushroom);
 
-      router.post("/postmushroom", addone);
       // aftering rquioring in the mushrooms schema we will post to the database using this method
-      const addone = (req, res) => {
-        mushroom
-          .create({ id, name, height, weight, moves })
-          .then(newdoc => {
-            res.json(newdoc);
-          })
-          .catch(err => res.json(err));
+      const register = async (req, res) => {
+        const { username, password, role } = req.body;
+        if (username && password) {
+          try {
+            const query = await Mushroom.findOne({ binomial_name: bionomial });
+            if (query === null) {
+              const mushroom = await makeMushroom(processedMushroom);
+              return res.send("mushroom created and added to db");
+            } else {
+              return res.status(403).send("mushroom already exists");
+            }
+          } catch (err) {
+            return res.status(404).send("an error occurred");
+          }
+        } else {
+          return res.status(403).send("incorrect credentials");
+        }
+      };
+
+      const makeMushroom = async processedMushroom => {
+        const newMush = new User({
+          name: username,
+          password: hash,
+          role: role
+        });
+        return await newMush.save();
       };
     })
 

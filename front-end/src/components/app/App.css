@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css?family=Lora|Nunito|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Lora', serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Nunito', sans-serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  font-size: 10px;
+}
+
+h1 {
+  font-family: "Lora", serif;
+  font-size: 8rem;
+}
+h2 {
+  font-family: "Lora", serif;
+  font-size: 6rem;
+  padding-top: 13px;
+}
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: 4rem;
+}
+h4 {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  padding-top: 10px;
+}
+.dark {
+  color: #dadada;
+  min-height: 100%;
+}
+.light {
+  color: #1c2022;
+  min-height: 100%;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+  float: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.projects-header {
+  padding-bottom: 40px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  width: 330px;
+  padding: 40px;
+}
+
+.card-dark:hover {
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.08),
+    0 6px 6px rgba(255, 255, 255, 0.08);
+  background: rgba(28, 32, 34, 0.9);
+}
+
+.card-light:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.wrapper {
+  max-width: 960px;
+  padding: 8rem;
+}
+
+.landing-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-content {
+  margin-bottom: 200px;
+}
+
+.landing-icons {
+  padding-right: 20px;
+}
+
+.project-link-container {
+  padding-top: 10px;
+}
+
+.project-link {
+  padding-right: 20px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.project-about {
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.project-text {
+  font-size: 11px;
+  font-family: "Nunito", sans-serif;
+}
+
+.float-right {
+  float: right;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.center-text {
+  text-align: center;
+}
+@media only screen and (max-width: 580px) {
+  :root {
+    font-size: 6px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  :root {
+    font-size: 7px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  :root {
+    font-size: 9px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  :root {
+    font-size: 11px;
+  }
+}
+
+/* Waving animation */
+span.wave {
+  padding-left: 20px;
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(12deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  40% {
+    transform: rotate(9deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

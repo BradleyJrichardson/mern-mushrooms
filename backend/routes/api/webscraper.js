@@ -83,7 +83,7 @@ const scrape = dirtyData => {
   const slicedName = doublestring.slice(indexToSplit);
 
   return {
-    bionomial: slicedName,
+    bionomial_name: slicedName,
     kingdom: $(".kingdom").text(),
     division: $(".division").text(),
     class: $(".class").text(),

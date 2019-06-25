@@ -6,51 +6,48 @@ const mushSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  common_name: {
-    type: String,
-    required: false
-  },
-  edible: {
-    type: Boolean,
-    required: false
-  },
-  undercap_type: {
-    type: String,
-    required: true
-  },
-  gill_attachment: {
-    type: String,
-    required: true
-  },
-  cap_morphology: {
-    type: String,
-    required: true
-  },
   division: {
     type: String,
-    required: false
+    required: true
   },
   class: {
     type: String,
-    required: false
+    required: true
   },
   order: {
     type: String,
-    required: false
+    required: true
   },
   family: {
     type: String,
-    required: false
+    required: true
   },
-  genus: {
+  mycology: {
+    hymenium_spore_type: {
+      type: String,
+      required: true
+    },
+    cap_type: {
+      type: String,
+      required: true
+    },
+    hymenium_shape_type: {
+      type: String,
+      required: true
+    },
+    stipe_type: {
+      type: String,
+      required: true
+    },
+    edibility_type: {
+      type: String,
+      required: true
+    }
+  },
+  description: {
     type: String,
-    required: false
+    required: true
   }
-
-  // image: {
-  //   data: Buffer,
-  //   type: String,
-  // }
 });
 
 module.exports = mongoose.model("mushroom", mushSchema);
