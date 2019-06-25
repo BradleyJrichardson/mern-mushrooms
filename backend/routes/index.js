@@ -17,7 +17,7 @@ router.get("/mushroom", index);
 // find a mushroom by an id "http://localhost:3000/mushroom/1"
 router.get("/mushroom/:id", findbyid);
 
-// find a mushroom by name "http://localhost:3000/mushroom/name/bulbasaur"
+// find a mushroom by name "http://localhost:3000/mushroom/name/mushroom"
 router.get("/mushroom/find/:name", findbyname);
 
 // delete a mushroom by id

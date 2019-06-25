@@ -6,7 +6,6 @@ const scrape = dirtyData => {
   // jsonframe($);
 
   const mycology = $(".infobox").text();
-  console.log(mycology);
   const startIndex = mycology.indexOf("Mycological characteristics");
   const slicedMycology = mycology.slice(startIndex);
 
@@ -64,12 +63,12 @@ const scrape = dirtyData => {
     .trim();
 
   const mycologyObj = {
-    hymeniumSporeType: hymeniumSporeType,
-    capType: capType,
-    hymeniumShapeType: hymeniumShapeType,
-    stipeType: stipeType,
-    ecologyType: ecologyType,
-    edibilityType: edibilityType
+    hymenium_spore_type: hymeniumSporeType,
+    cap_type: capType,
+    hymenium_shape_type: hymeniumShapeType,
+    stipe_type: stipeType,
+    ecology_type: ecologyType,
+    edibility_type: edibilityType
   };
 
   const doublestring = $(".infobox")
