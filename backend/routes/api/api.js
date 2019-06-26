@@ -7,12 +7,11 @@ const Mushroom = require("../../model/mushroom");
 router.get("/pullmushroom", (req, res) => {
   axios
     .get(
-      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Boletus_edulis"
+      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Suillus_luteus"
     )
     .then(response => {
       const data = response.data;
       const image = data.lead.image.urls[800];
-      console.log(image);
       const operation = data.remaining.sections;
       const result = operation.filter(obj => {
         return obj.line === "Description";
@@ -27,18 +26,20 @@ router.get("/pullmushroom", (req, res) => {
           .replace(/ *\[[^)]*\] */g, "");
       });
       blockToParse =
-        data.lead.sections[0].text + data.remaining.sections[0].text;
+        data.lead.sections[0].text +
+        data.remaining.sections[0].text +
+        data.remaining.sections[1].text +
+        data.remaining.sections[2].text +
+        data.remaining.sections[3].text +
+        data.remaining.sections[4].text +
+        data.remaining.sections[5].text +
+        data.remaining.sections[6].text;
       const processedMushroom = scrape(blockToParse);
       processedMushroom.description = description[0];
-      console.log(processedMushroom);
 
       const mycologyobj = processedMushroom.mycology;
 
       const makeMushroom = async () => {
-        console.log("above");
-        console.log(mycologyobj);
-        console.log(processedMushroom);
-        console.log("line 40");
         const newMush = new Mushroom({
           binomial_name: processedMushroom.bionomial_name,
           kingdom: processedMushroom.kingdom,
@@ -60,14 +61,12 @@ router.get("/pullmushroom", (req, res) => {
       };
 
       const bionomial = processedMushroom.bionomial_name;
-
+      console.log(processedMushroom.images);
       // // aftering rquioring in the mushrooms schema we will post to the database using this method
       const checkMushroom = async () => {
         try {
           const query = await Mushroom.findOne({ binomial_name: bionomial });
-          console.log(query);
           if (query === null) {
-            console.log(processedMushroom);
             const mushroom = await makeMushroom();
             console.log("success");
           } else {

@@ -82,6 +82,20 @@ const scrape = dirtyData => {
   const indexToSplit = doublestring.lastIndexOf(firstChar);
   const slicedName = doublestring.slice(indexToSplit);
 
+  // const images = $(".image")
+  //   .children()
+  //   .attr("src");
+
+  const images = $(".image").find("img");
+  // .attr("src");
+
+  // const results = [];
+  // $(".image")
+  //   .find("img")
+  //   .each(image => {
+  //     results.push($(image).attr("src"));
+  //   });
+
   return {
     bionomial_name: slicedName,
     kingdom: $(".kingdom").text(),
@@ -89,7 +103,8 @@ const scrape = dirtyData => {
     class: $(".class").text(),
     order: $(".order").text(),
     family: $(".family").text(),
-    mycology: mycologyObj
+    mycology: mycologyObj,
+    images: images
   };
 };
 
