@@ -7,7 +7,7 @@ const Mushroom = require("../../model/mushroom");
 router.get("/pullmushroom", (req, res) => {
   axios
     .get(
-      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Psilocybe_subaeruginosa"
+      "https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Boletus_edulis"
     )
     .then(response => {
       const data = response.data;
@@ -32,34 +32,53 @@ router.get("/pullmushroom", (req, res) => {
       processedMushroom.description = description[0];
       console.log(processedMushroom);
 
-      // aftering rquioring in the mushrooms schema we will post to the database using this method
-      const register = async (req, res) => {
-        const { username, password, role } = req.body;
-        if (username && password) {
-          try {
-            const query = await Mushroom.findOne({ binomial_name: bionomial });
-            if (query === null) {
-              const mushroom = await makeMushroom(processedMushroom);
-              return res.send("mushroom created and added to db");
-            } else {
-              return res.status(403).send("mushroom already exists");
-            }
-          } catch (err) {
-            return res.status(404).send("an error occurred");
-          }
-        } else {
-          return res.status(403).send("incorrect credentials");
-        }
-      };
+      const mycologyobj = processedMushroom.mycology;
 
-      const makeMushroom = async processedMushroom => {
-        const newMush = new User({
-          name: username,
-          password: hash,
-          role: role
+      const makeMushroom = async () => {
+        console.log("above");
+        console.log(mycologyobj);
+        console.log(processedMushroom);
+        console.log("line 40");
+        const newMush = new Mushroom({
+          binomial_name: processedMushroom.bionomial_name,
+          kingdom: processedMushroom.kingdom,
+          division: processedMushroom.division,
+          class: processedMushroom.class,
+          order: processedMushroom.order,
+          family: processedMushroom.family,
+          mycology: {
+            hymenium_spore_type: mycologyobj.hymenium_spore_type,
+            cap_type: mycologyobj.cap_type,
+            hymenium_shape_type: mycologyobj.hymenium_shape_type,
+            stipe_type: mycologyobj.stipe_type,
+            ecology_type: mycologyobj.ecology_type,
+            edibility_type: mycologyobj.edibility_type
+          },
+          description: processedMushroom.description
         });
         return await newMush.save();
       };
+
+      const bionomial = processedMushroom.bionomial_name;
+
+      // // aftering rquioring in the mushrooms schema we will post to the database using this method
+      const checkMushroom = async () => {
+        try {
+          const query = await Mushroom.findOne({ binomial_name: bionomial });
+          console.log(query);
+          if (query === null) {
+            console.log(processedMushroom);
+            const mushroom = await makeMushroom();
+            console.log("success");
+          } else {
+            console.log("mushroom exists");
+          }
+        } catch (err) {
+          console.log(err);
+          console.log("fail");
+        }
+      };
+      checkMushroom();
     })
 
     .catch(err => {

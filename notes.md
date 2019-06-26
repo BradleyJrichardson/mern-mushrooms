@@ -11,4 +11,25 @@ In stinkhorns, it develops internally and then is exposed in the form of a foul-
 In cup fungi, it is on the concave surface of the cup.
 In teeth fungi, it grows on the outside of tooth-like spines.
 
-https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Suillus_luteus
+# edible types
+
+Armillaria luteobubalina  
+Lactarius deliciosus  
+Boletus edulis  
+Laccaria Sp  
+Lepista nuda  
+Hydnum repandum  
+Marasmius oreades  
+Puffball Sp  
+Leccinum scabrum  
+Coprinus comatus  
+Suillus luteus  
+Suillus granulatus  
+Amanita rubecens  
+Fire Morel  
+Red Staining Agaricus  
+Chanterelles  
+Agaricus subrufescens  
+Marzipan Agaricus  
+Parasol Mushroom  
+The Big Sheath Mushroom
