@@ -38,6 +38,7 @@ router.get("/pullmushroom", (req, res) => {
       processedMushroom.description = description[0];
 
       const mycologyobj = processedMushroom.mycology;
+      const images = processedMushroom.images.unshift(image);
 
       const makeMushroom = async () => {
         const newMush = new Mushroom({
@@ -55,7 +56,8 @@ router.get("/pullmushroom", (req, res) => {
             ecology_type: mycologyobj.ecology_type,
             edibility_type: mycologyobj.edibility_type
           },
-          description: processedMushroom.description
+          description: processedMushroom.description,
+          images: images
         });
         return await newMush.save();
       };
