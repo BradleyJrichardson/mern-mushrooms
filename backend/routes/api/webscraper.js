@@ -86,15 +86,17 @@ const scrape = dirtyData => {
   //   .children()
   //   .attr("src");
 
-  const images = $(".image").find("img");
-  // .attr("src");
-
-  // const results = [];
-  // $(".image")
+  // const images = $(".image")
   //   .find("img")
-  //   .each(image => {
-  //     results.push($(image).attr("src"));
-  //   });
+  //   .attr("src");
+
+  const results = [];
+  $(".image")
+    .find("img")
+    .each((i, image) => {
+      results.push("https:" + $(image).attr("src"));
+      console.log(image);
+    });
 
   return {
     bionomial_name: slicedName,
@@ -104,7 +106,7 @@ const scrape = dirtyData => {
     order: $(".order").text(),
     family: $(".family").text(),
     mycology: mycologyObj,
-    images: images
+    images: results
   };
 };
 
