@@ -48,7 +48,7 @@ const mushSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  images: [String]
+  images: { type: [String] }
 });
 
 module.exports = mongoose.model("mushroom", mushSchema);

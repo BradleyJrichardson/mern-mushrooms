@@ -57,13 +57,12 @@ router.get("/pullmushroom", (req, res) => {
             edibility_type: mycologyobj.edibility_type
           },
           description: processedMushroom.description,
-          images: images
+          images: processedMushroom.images
         });
         return await newMush.save();
       };
 
       const bionomial = processedMushroom.bionomial_name;
-      console.log(processedMushroom.images);
       // // aftering rquioring in the mushrooms schema we will post to the database using this method
       const checkMushroom = async () => {
         try {

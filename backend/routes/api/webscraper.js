@@ -87,7 +87,6 @@ const scrape = dirtyData => {
     .find("img")
     .each((i, image) => {
       results.push("https:" + $(image).attr("src"));
-      console.log(image);
     });
 
   return {
