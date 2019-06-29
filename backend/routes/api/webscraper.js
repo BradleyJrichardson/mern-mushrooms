@@ -1,10 +1,7 @@
 const cheerio = require("cheerio");
-const jsonframe = require("jsonframe-cheerio");
 
 const scrape = dirtyData => {
   const $ = cheerio.load(dirtyData);
-  // jsonframe($);
-
   const mycology = $(".infobox").text();
   const startIndex = mycology.indexOf("Mycological characteristics");
   const slicedMycology = mycology.slice(startIndex);

@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 
 const mushSchema = new mongoose.Schema({
+  common_name: { type: [String] },
   binomial_name: {
     type: String,
     required: true
