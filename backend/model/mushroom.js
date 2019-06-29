@@ -8,19 +8,19 @@ const mushSchema = new mongoose.Schema({
   },
   division: {
     type: String,
-    required: true
+    required: false
   },
   class: {
     type: String,
-    required: true
+    required: false
   },
   order: {
     type: String,
-    required: true
+    required: false
   },
   family: {
     type: String,
-    required: true
+    required: false
   },
   mycology: {
     hymenium_spore_type: {
@@ -46,7 +46,7 @@ const mushSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true
+    required: false
   },
   images: { type: [String] }
 });

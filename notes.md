@@ -17,6 +17,8 @@ Chanterelles
 Cantharellus_concinnus s
 Will add more information to this wikipedia page
 
+https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Hydnum_repandum
+
 ```js
 [
   "Boletus_edulis",
