@@ -2,12 +2,12 @@ const express = require("express");
 const axios = require("axios");
 const { scrape } = require("./webscraper");
 const router = express.Router();
-const Mushroom = require("../../model/mushroom");
+const Mushroom = require("../model/mushroom");
 
 router.get("/pullmushroom", (req, res) => {
   axios
     .get(
-      `https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Agaricus_subrufescens`
+      `https://en.wikipedia.org/api/rest_v1/page/mobile-sections/Suillus_luteus`
     )
     .then(response => {
       const data = response.data;
@@ -30,27 +30,21 @@ router.get("/pullmushroom", (req, res) => {
       blockToParse =
         data.lead.sections[0].text + data.remaining.sections[0].text;
       data.remaining.sections[1].text + data.remaining.sections[2].text;
-      // data.remaining.sections[3].text +
-      // data.remaining.sections[4].text +
-      // data.remaining.sections[5].text +
-      // data.remaining.sections[6].text;
       const processedMushroom = scrape(blockToParse);
       processedMushroom.description = description[0];
 
       const mycologyobj = processedMushroom.mycology;
       const cloud_images = [
-        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561802225/mushrooms/Agaricus_subrufescens_1_q5nc0u.jpg",
-        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561802208/mushrooms/Agaricus_subrufescens_2_eopsp1.jpg",
-        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561802199/mushrooms/Agaricus_subrufescens_3_tsin5g.jpg"
+        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561810576/mushrooms/Suillus_luteus_3_iwrz7f.jpg",
+        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561810581/mushrooms/Suillus_luteus_1_fqp73a.jpg",
+        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561810578/mushrooms/Suillus_luteus_5_jeyd7x.jpg",
+        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561810576/mushrooms/Suillus_luteus_2_qbb0v5.jpg",
+        "https://res.cloudinary.com/djx4kaofm/image/upload/v1561810583/mushrooms/Suillus_luteus_4_d5xqog.jpg"
       ];
 
       const makeMushroom = async () => {
         const newMush = new Mushroom({
-          common_name: [
-            "Almond mushroom",
-            "Mushroom of the sun",
-            "God's mushroom"
-          ],
+          common_name: ["Slippery Jack", "Sticky bun"],
           binomial_name: processedMushroom.bionomial_name,
           kingdom: processedMushroom.kingdom,
           division: processedMushroom.division,
@@ -72,7 +66,7 @@ router.get("/pullmushroom", (req, res) => {
       };
 
       const bionomial = processedMushroom.bionomial_name;
-      // // aftering rquioring in the mushrooms schema we will post to the database using this method
+      console.log(bionomial);
       const checkMushroom = async () => {
         try {
           const query = await Mushroom.findOne({ binomial_name: bionomial });

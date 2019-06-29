@@ -3,13 +3,12 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const mongoURI = process.env.MONGO_PROD;
 const app = new express();
-const api = require("./routes/api/api");
 const cors = require("cors");
-
 app.use(cors());
 
 // connect to api
-app.use("/api", api);
+const mushroomApi = require("./mushroom-api/mushroom-getter");
+app.use("/api", mushroomApi);
 
 // connect to router
 app.use(require("./routes"));
