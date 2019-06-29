@@ -25,23 +25,23 @@ const mushSchema = new mongoose.Schema({
   mycology: {
     hymenium_spore_type: {
       type: String,
-      required: true
+      required: false
     },
     cap_type: {
       type: String,
-      required: true
+      required: false
     },
     hymenium_shape_type: {
       type: String,
-      required: true
+      required: false
     },
     stipe_type: {
       type: String,
-      required: true
+      required: false
     },
     edibility_type: {
       type: String,
-      required: true
+      required: false
     }
   },
   description: {

@@ -4,6 +4,8 @@ const { scrape } = require("./webscraper");
 const router = express.Router();
 const Mushroom = require("../../model/mushroom");
 
+const mushArray = [];
+
 router.get("/pullmushroom", (req, res) => {
   axios
     .get(
