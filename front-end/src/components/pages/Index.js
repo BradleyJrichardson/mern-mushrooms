@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import IndexCard from "../utils/IndexCard";
+import Header from "../utils/Header";
 
 class Index extends Component {
   constructor(props) {
@@ -26,18 +27,23 @@ class Index extends Component {
 
   mushroomIndex = () => {
     return (
-      <div>
-        {this.state.mushrooms.map((mushroom, index) => (
-          <div key={index}>
-            <IndexCard mushroom={mushroom} />
-          </div>
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="wrapper">
+          {this.state.mushrooms.map((mushroom, index) => (
+            <IndexCard key={index} mushroom={mushroom} />
+          ))}
+        </div>
+      </React.Fragment>
     );
   };
 
   render() {
-    return <div>{this.mushroomIndex()}</div>;
+    return (
+      <React.Fragment>
+        <Header />
+        {this.mushroomIndex()}
+      </React.Fragment>
+    );
   }
 }
 

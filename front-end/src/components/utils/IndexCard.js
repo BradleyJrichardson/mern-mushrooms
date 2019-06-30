@@ -19,6 +19,8 @@ const IndexCard = props => {
     hymenium_shape_type,
     hymenium_spore_type,
     stipe_type,
+    spore_print,
+    ecology,
     edibility_type
   } = mycology;
 
@@ -26,29 +28,58 @@ const IndexCard = props => {
     <div key={index}>{name}</div>
   ));
 
-  // const mushImages = images.map((image, index) => {
-  //   <div key={index}>
-  //     <img src={image} alt="" />
-  //   </div>;
-  // });
+  const mushImages = images.map((name, index) => (
+    <div key={index}>
+      <Image src={name} width={330} height={280} mode="fit" />
+    </div>
+  ));
 
   return (
     <React.Fragment>
       <div className="card">
-        <h3>{binomial_name}</h3>
-        <div>{commonNames}</div>
-        <div className="italic project-about">{description} </div>
-        <div className="project-text">{division}</div>
-        <div className="project-text"> {mush_class}</div>
-        <div className="project-text"> {family}</div>
-        <div className="project-text"> {order}</div>
-        <h1>Mycology</h1>
-        <div className="project-text"> {cap_type}</div>
-        <div className="project-text"> {hymenium_shape_type}</div>
-        <div className="project-text"> {hymenium_spore_type}</div>
-        <div className="project-text"> {stipe_type}</div>
-        <div className="project-text"> {edibility_type}</div>
-        {/* <div>{mushImages}</div> */}
+        <h2 className="italic mush-heading">{binomial_name}</h2>
+        <div className="mush-names">{commonNames}</div>
+        <div className="italic mush-about">{description} </div>
+        <img src={images[0]} alt="" className="index-image" />
+        <div className="mush-text">{division}</div>
+
+        <div className="mush-text"> {mush_class}</div>
+        <div className="mush-text"> {family}</div>
+        <div className="mush-text"> {order}</div>
+        <h3 className="mush-subheading">Mycology</h3>
+
+        {/* <Image
+          src={images[0]}
+          width={330}
+          height={280}
+          mode="fit"
+          style={{ display: "inline" }}
+        /> */}
+        <div className="mush-text">
+          <span className="bold">Cap Type: </span>
+          {cap_type}
+        </div>
+        <div className="mush-text">
+          <span className="bold">Hymenium Shape: </span>
+          {hymenium_shape_type}
+        </div>
+        <div className="mush-text">
+          <span className="bold">Hymenium Spore Type: </span>
+          {hymenium_spore_type}
+        </div>
+        <div className="mush-text">
+          <span className="bold">Spore Print: </span>
+          {spore_print}
+        </div>
+        <div className="mush-text">
+          <span className="bold">Stipe:</span> {stipe_type}
+        </div>
+        <div className="mush-text">
+          <span className="bold">Ecology:</span> {ecology}
+        </div>
+        <div className="mush-text">
+          <span className="bold">{edibility_type}</span>
+        </div>
       </div>
     </React.Fragment>
   );

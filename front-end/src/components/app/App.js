@@ -3,11 +3,7 @@ import "./App.css";
 import Landing from "../pages/Landing";
 
 const App = () => {
-  return (
-    <div className="wrapper">
-      <Landing />
-    </div>
-  );
+  return <Landing />;
 };
 
 export default App;

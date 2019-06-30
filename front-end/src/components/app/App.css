@@ -5,6 +5,15 @@
 font-family: 'Roboto', sans-serif;
 font-family: 'Nunito', sans-serif; */
 
+/* 
+#FDF6E3
+#DBAB15
+#CCC6B4
+#BCB6A6
+#F2ECD9
+ */
+
+/* Reset  */
 * {
   margin: 0;
   padding: 0;
@@ -15,120 +24,111 @@ font-family: 'Nunito', sans-serif; */
   color: inherit;
 }
 
+/* For dynamic sizing */
 :root {
   font-size: 10px;
+  --lightest: #fdf6e3;
+  --yellow: #dbab15;
+  --light: #ccc6b4;
+  --tan: #bcb6a6;
+  --lighter: #f2ecd9;
 }
 
+/* utility classes */
+.wrapper {
+  max-width: 1440px;
+  padding: 8rem;
+  margin: 0 auto;
+}
+
+.italic {
+  font-style: italic;
+}
+.center-text {
+  text-align: center;
+}
+.wrapper {
+  padding-right: 50px;
+}
+.bold {
+  font-weight: bold;
+}
 h1 {
   font-family: "Lora", serif;
-  font-size: 8rem;
+  font-size: 40px;
 }
 h2 {
   font-family: "Lora", serif;
-  font-size: 6rem;
+  font-size: 35px;
   padding-top: 13px;
 }
 h3 {
-  font-family: "Nunito", sans-serif;
-  font-size: 4rem;
+  font-family: "Lora", serif;
+  font-size: 25px;
 }
 h4 {
   font-family: "Nunito", sans-serif;
   font-size: 2rem;
   padding-top: 10px;
 }
-.dark {
-  color: #dadada;
-  min-height: 100%;
-}
-.light {
-  color: #1c2022;
-  min-height: 100%;
-}
 
-.btn-clear {
-  border: none;
-  background: transparent;
-  float: right;
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin-right: 20px;
-  margin-top: 15px;
-}
-
-.projects-header {
-  padding-bottom: 40px;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-}
-
-.card {
-  width: 800px;
-  padding: 40px;
-}
-
-.card:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.wrapper {
-  max-width: 960px;
-  padding: 8rem;
-}
-
+/* Landing page */
 .landing-page {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .landing-content {
   margin-bottom: 200px;
 }
 
-.landing-icons {
-  padding-right: 20px;
+/* Mushroom card index */
+
+.card {
+  width: 70%;
+  padding: 50px;
+  float: right;
 }
 
-.project-link-container {
+.index-image {
+  width: 300px;
+  float: right;
+  padding: 20px;
+}
+
+.mush-heading {
+  padding-bottom: 10px;
+}
+
+.mush-subheading {
+  padding: 10px 0 5px 0;
+}
+.mush-names {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
+.mush-about {
   padding-top: 10px;
-}
-
-.project-link {
-  padding-right: 20px;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.project-about {
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
 }
-
-.project-text {
+.mush-text {
   font-size: 11px;
   font-family: "Nunito", sans-serif;
 }
 
-.float-right {
+/* header util */
+.header {
+  position: fixed;
+  display: block;
+  width: 100vw;
+  height: 8vh;
+  background-color: var(--lightest);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.5);
   float: right;
-  padding-right: 30px;
-  padding-bottom: 30px;
 }
 
-.center-text {
-  text-align: center;
-}
 @media only screen and (max-width: 580px) {
   :root {
     font-size: 6px;
