@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import IndexCard from "../utils/IndexCard";
 
 class Index extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Index extends Component {
       mushrooms: []
     };
   }
+
   componentDidMount() {
     this.loadMushrooms();
   }
@@ -24,10 +26,10 @@ class Index extends Component {
 
   mushroomIndex = () => {
     return (
-      <div className="book-list">
+      <div>
         {this.state.mushrooms.map((mushroom, index) => (
-          <div key={index} className="book">
-            {console.log(mushroom)}
+          <div key={index}>
+            <IndexCard mushroom={mushroom} />
           </div>
         ))}
       </div>

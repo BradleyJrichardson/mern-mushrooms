@@ -4,7 +4,7 @@ import Intro from "./Intro";
 
 export default class Landing extends React.Component {
   state = {
-    authed: false
+    authed: true
   };
 
   render() {
