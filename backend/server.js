@@ -6,11 +6,6 @@ const app = new express();
 const cors = require("cors");
 app.use(cors());
 
-// connect to api
-const mushroomApi = require("./mushroom-api/mushroom-getter");
-app.use("/api", mushroomApi);
-
-// connect to router
 app.use(require("./routes"));
 
 // defining some options to pass into connect

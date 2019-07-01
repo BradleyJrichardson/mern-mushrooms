@@ -14,8 +14,8 @@ const checkPassword = async (password, hash) => {
 const generateUser = async (username, password, email) => {
   const hash = await generateHash(password);
   const newUser = new User({
+    username: username,
     email: email,
-    name: username,
     password: hash
   });
   return await newUser.save();

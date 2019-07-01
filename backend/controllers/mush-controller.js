@@ -1,4 +1,4 @@
-const mushroom = require("../model/mushroom");
+const mushroom = require("../models/Mushroom");
 
 const getMushrooms = async (req, res) => {
   const mushrooms = await mushroom.find({});

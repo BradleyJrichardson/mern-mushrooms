@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const { scrape } = require("./webscraper");
 const router = express.Router();
-const Mushroom = require("../model/mushroom");
+const Mushroom = require("../models/mushroom");
 
 router.get("/pullmushroom", (req, res) => {
   axios
@@ -72,21 +72,19 @@ router.get("/pullmushroom", (req, res) => {
           const query = await Mushroom.findOne({ binomial_name: bionomial });
           if (query === null) {
             const mushroom = await makeMushroom();
-            console.log("success");
+            console.log("success  🍄 added  👏");
           } else {
-            console.log("mushroom exists");
+            console.log("mushroom exists 🤨");
           }
         } catch (err) {
-          console.log(err);
-          console.log("fail");
-          console.log(mush);
+          console.log("fail 🤬" + err);
         }
       };
       checkMushroom();
     })
 
     .catch(err => {
-      console.log(err);
+      console.log("fail 🤬" + err);
     });
 });
 
