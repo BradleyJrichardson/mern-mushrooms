@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IndexCard from "../utils/IndexCard";
 import Header from "../utils/Header";
+import Sidebar from "../utils/Sidebar";
 
 class Index extends Component {
   constructor(props) {
@@ -10,22 +11,8 @@ class Index extends Component {
     };
   }
 
-  componentDidMount() {
-    this.loadMushrooms();
-  }
-
-  loadMushrooms = () => {
-    const url = "http://localhost:5000/mushroom";
-    fetch(url)
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({
-          mushrooms: data
-        });
-      });
-  };
-
   mushroomIndex = () => {
+    console.log(this.props);
     return (
       <React.Fragment>
         <div className="wrapper">
@@ -41,6 +28,7 @@ class Index extends Component {
     return (
       <React.Fragment>
         <Header />
+        <Sidebar />
         {this.mushroomIndex()}
       </React.Fragment>
     );

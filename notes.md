@@ -85,3 +85,50 @@ Agaricus subrufescens
 Marzipan Agaricus  
 Parasol Mushroom  
 The Big Sheath Mushroom
+
+# thoughts that keep me awake
+
+- focus on the user flow through the application there with be a few stages
+
+## landing page
+
+sign in
+sign up
+
+## then goes to a page where
+
+manual mode
+auto recognition mode  
+mushroom index
+
+auto recognition mode just displays a camera that is closed with the tes work in progress
+
+## manual mode
+
+is a page where people pick the characteristics of the mushroom they are attempting to identify
+
+could be a single page will little boxes than have an onlick event that trigger a function to set a state of that characteristc
+
+## results page
+
+the results page in shown the the use when they have invoked all of the fucntion
+-- have an option for them to click i dont know
+
+the results pay with fetch all the matching mushrooms from the database or from the pre-rendered ones using context? or maybe pass down the prop the whole way not sure the ebst way to goa bout it
+
+so when the user clicking submit then a result component will be renderd and this will be apssed the props from the form page
+
+THIS IS MVP
+
+the user then clicks on the mushroom to be brought to the page about the mushroom.
+
+### lots more features to be added
+
+- allow user to comment on each mushrooms and to upload their own picutres.
+
+
+# design flow
+
+look at some examples of user flow of the login, signup and initial landing pages
+
+
