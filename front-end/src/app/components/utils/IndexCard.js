@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "./Image";
 
 const IndexCard = props => {
   let {
@@ -28,11 +27,11 @@ const IndexCard = props => {
     <div key={index}>{name}</div>
   ));
 
-  const mushImages = images.map((name, index) => (
-    <div key={index}>
-      <Image src={name} width={330} height={280} mode="fit" />
-    </div>
-  ));
+  // const mushImages = images.map((name, index) => (
+  //   <div key={index}>
+  //     <Image src={name} width={330} height={280} mode="fit" />
+  //   </div>
+  // ));
 
   return (
     <React.Fragment>
@@ -48,13 +47,6 @@ const IndexCard = props => {
         <div className="mush-text"> {order}</div>
         <h3 className="mush-subheading">Mycology</h3>
 
-        {/* <Image
-          src={images[0]}
-          width={330}
-          height={280}
-          mode="fit"
-          style={{ display: "inline" }}
-        /> */}
         <div className="mush-text">
           <span className="bold">Cap Type: </span>
           {cap_type}

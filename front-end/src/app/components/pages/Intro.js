@@ -7,7 +7,7 @@ export default function Intro() {
         <h1>
           Welcome to the Mushroom App
           <span className="wave" role="img">
-            👋
+            🍄
           </span>
           <hr />
         </h1>
