@@ -4,11 +4,9 @@ import Routes from "./routes/Routes";
 import axios from "axios";
 
 class App extends React.Component {
-  state = { mushrooms: null, auth: false };
+  state = { mushrooms: null };
 
   login = async userCredentials => {
-    // console.log(userCredentials)
-    // check the credentials
     try {
       const response = await axios.post(
         "http://localhost:5000/auth/login",
@@ -22,25 +20,6 @@ class App extends React.Component {
     } catch (err) {
       this.setState({
         auth: false,
-        error: err
-      });
-    }
-  };
-
-  register = async registerDetails => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/register",
-        registerDetails
-      );
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      this.setState({
-        authentication: true
-      });
-    } catch (err) {
-      this.setState({
-        authentication: false,
         error: err
       });
     }
@@ -69,15 +48,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { mushrooms, auth } = this.state;
-    return (
-      <Routes
-        mushrooms={mushrooms}
-        register={this.register}
-        auth={auth}
-        login={this.login}
-      />
-    );
+    const { mushrooms } = this.state;
+    return <Routes mushrooms={mushrooms} />;
   }
 }
 

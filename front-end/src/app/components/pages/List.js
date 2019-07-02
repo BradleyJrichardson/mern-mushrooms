@@ -1,24 +1,19 @@
 import React from "react";
-import IndexCard from "../utils/IndexCard";
-import { Redirect } from "react-router-dom";
+import IndexCard from "../IndexCard";
 
 const List = props => {
-  const { mushrooms, auth } = props;
-  console.log(props);
+  // const { mushrooms, auth } = props;
 
-  if (auth) {
-    return (
-      <React.Fragment>
-        <div className="wrapper">
+  return (
+    <React.Fragment>
+      {/* <div className="wrapper">
           {mushrooms.map((mushroom, index) => (
             <IndexCard key={index} mushroom={mushroom} />
           ))}
-        </div>
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
+        </div> */}
+      <h1>hello from list 🍄</h1>
+    </React.Fragment>
+  );
 };
 
 export default List;
