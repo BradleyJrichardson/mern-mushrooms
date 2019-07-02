@@ -6,45 +6,19 @@ import axios from "axios";
 class App extends React.Component {
   state = { mushrooms: null };
 
-  login = async userCredentials => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/login",
-        userCredentials
-      );
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      this.setState({
-        auth: true
-      });
-    } catch (err) {
-      this.setState({
-        auth: false,
-        error: err
-      });
-    }
-  };
-
   async componentDidMount() {
+    const token = localStorage.getItem("token");
+
+    console.log(token);
     try {
       const response = await axios.get("http://localhost:5000/mush/index");
-      const token = localStorage.getItem("token");
-      const auth = await axios.get("http://localhost:5000/user/current-user", {
-        headers: { token: token }
-      });
       this.setState({
-        mushrooms: response.data,
-        auth: true,
-        currentUser: auth.data
+        mushrooms: response.data
       });
     } catch (err) {
       console.log(err);
-      const response = await axios.get("http://localhost:5000/mush/index");
-      this.setState({
-        mushrooms: response.data,
-        auth: false
-      });
     }
+    console.log(this.state);
   }
 
   render() {

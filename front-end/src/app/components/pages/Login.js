@@ -1,8 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { Authorizer } from "../../routes/Routes";
 
 class Login extends React.Component {
-  state = {};
+  state = {
+    redirect: false
+  };
 
   handleInput = e => {
     this.setState({
@@ -10,16 +13,26 @@ class Login extends React.Component {
     });
   };
 
-  handleLogin = e => {
+  login = e => {
+    let credentials = this.state;
     e.preventDefault();
-    this.props.login(this.state);
+    Authorizer.authenticate(credentials, () => {
+      this.setState(() => ({
+        redirect: true
+      }));
+    });
   };
 
   render() {
-    if (this.props.auth) {
+    const { redirect } = this.state;
+
+    if (redirect === true) {
       return <Redirect to="/list" />;
-    } else {
-      return (
+    }
+
+    return (
+      <div>
+        <p>You must log in to view the page</p>
         <form>
           <label>Email</label>
           <input
@@ -42,10 +55,10 @@ class Login extends React.Component {
             id="password"
             onChange={this.handleInput}
           />
-          <input type="submit" value="Submit" onClick={this.handleLogin} />
+          <input type="submit" value="Submit" onClick={this.login} />
         </form>
-      );
-    }
+      </div>
+    );
   }
 }
 

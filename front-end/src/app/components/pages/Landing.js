@@ -1,5 +1,6 @@
 import React from "react";
-import Auth from "../../utils/Auth";
+import { Link } from "react-router-dom";
+import { Authorizer } from "../../routes/Routes";
 
 export default function Landing(props) {
   return (
@@ -11,15 +12,11 @@ export default function Landing(props) {
             🍄
           </span>
           <hr />
-          <button
-            onClick={() => {
-              Auth.login(() => {
-                props.history.push("/list");
-              });
-            }}
-          >
-            Login
-          </button>
+          <div>
+            <button>
+              <Link to="/login">Login</Link>
+            </button>
+          </div>
         </h1>
       </div>
     </div>
