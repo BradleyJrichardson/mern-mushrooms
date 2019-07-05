@@ -48,8 +48,21 @@ class App extends React.Component {
       Ecology
     } = filters;
     let counter = 0;
-    console.log(mushrooms);
-    let results = null;
+
+    let results = [];
+    mushrooms.map(mushroom => {
+      if (
+        mushroom.mycology.cap_type.includes(CapType) &&
+        mushroom.mycology.hymenium_spore_type.includes(HymeniumSporeType) &&
+        mushroom.mycology.hymenium_shape_type.includes(HymeniumShapeType) &&
+        mushroom.mycology.stipe_type.includes(StipeType) &&
+        mushroom.mycology.spore_print.includes(SporePrint) &&
+        mushroom.mycology.ecology.includes(Ecology)
+      ) {
+        results.push(mushroom);
+      }
+    });
+    console.log(results);
     return results;
   };
 
