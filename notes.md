@@ -126,9 +126,19 @@ the user then clicks on the mushroom to be brought to the page about the mushroo
 
 - allow user to comment on each mushrooms and to upload their own picutres.
 
-
 # design flow
 
 look at some examples of user flow of the login, signup and initial landing pages
 
+# just start again
 
+keep it simple stupid
+
+have dropdowns that setstate and then use that state to filter through the mushrooms then pass the filtered mushrooms to a results component as props and then render that conditionally when the form is submited and the filtering function is compplted
+
+so onsubmit of form we will determine which mushrooms
+
+just simplicitiy sack we will just contionally render each of the full page component by incrementing a counter that will be done each time we set the select to a state property.
+we could use the property name and a different lifecycle method but eh
+
+doing this ill be able to actually acheive an mvp that i may be able to use before mushrooms season is over

@@ -24,9 +24,7 @@ font-family: 'Nunito', sans-serif; */
   color: inherit;
 }
 
-/* For dynamic sizing */
 :root {
-  font-size: 10px;
   --lightest: #fdf6e3;
   --yellow: #dbab15;
   --light: #ccc6b4;
@@ -34,12 +32,12 @@ font-family: 'Nunito', sans-serif; */
   --lighter: #f2ecd9;
 }
 
-/* utility classes */
-.wrapper {
-  max-width: 1440px;
-  padding: 8rem;
-  margin: 0 auto;
+.mush-index {
+  margin-top: 10px;
+  display: block;
 }
+
+/* utility classes */
 
 .italic {
   font-style: italic;

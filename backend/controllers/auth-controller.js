@@ -7,6 +7,7 @@ const {
 
 // register post endpoint
 const register = async (req, res) => {
+  console.log("register ");
   const { username, password, email } = req.body;
   if (username && password) {
     try {
@@ -66,3 +67,12 @@ module.exports = {
   register,
   login
 };
+
+// test("Sends token when correct credentials are passed", () => {
+//   const req = {
+//     email: "brad@gmail.com",
+//     username: "brad",
+//     password: "password"
+//   };
+//   expect(login(req)).toBe(true);
+// });
