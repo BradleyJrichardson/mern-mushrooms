@@ -12,26 +12,41 @@ import HymeniumSporeType from "./components/HymeniumSporeType";
 class App extends React.Component {
   state = {
     mushrooms: null,
-    stage: 0
+    stage: 1,
+    CapType: null,
+    HymeniumSporeType: null,
+    HymeniumShapeType: null,
+    StipeType: null,
+    SporePrint: null,
+    Ecology: null
   };
 
   async componentDidMount() {
-    try {
-      const response = await axios.get("http://localhost:5000/mush/index");
-      this.setState({
-        mushrooms: response.data
-      });
-    } catch (err) {
-      console.log(err);
+    if (this.state.mushrooms === null) {
+      try {
+        const response = await axios.get("http://localhost:5000/mush/index");
+        this.setState({
+          mushrooms: response.data
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
+    console.log("mounting");
   }
 
-  handleClick = () => {
-    this.setState({ stage: this.state.stage + 1 });
+  setOption = (type, option) => {
+    this.setState({ type, option });
+  };
+
+  handleClick = (e, type, char) => {
+    console.log(type);
+    console.log(char);
+    this.setState({ [type]: char, stage: this.state.stage + 1 });
   };
 
   render() {
-    console.log(this.state.mushrooms);
+    console.log(this.state);
     let { stage } = this.state;
     console.log(stage);
     if (stage === 0) {
@@ -53,12 +68,17 @@ class App extends React.Component {
         </React.Fragment>
       );
     }
-
     if (stage === 1) {
       return (
         <React.Fragment>
           <CapType />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "Umbonate")}
+          >
+            Umbonate
+          </h2>
         </React.Fragment>
       );
     }
@@ -100,6 +120,11 @@ class App extends React.Component {
           <Ecology />
           <button onClick={this.handleClick}>next option</button>
         </React.Fragment>
+      );
+    }
+    if (stage === 7) {
+      return (
+        <React.Fragment>{/* <Result results={results} /> */}</React.Fragment>
       );
     }
   }
