@@ -18,7 +18,8 @@ class App extends React.Component {
     HymeniumShapeType: null,
     StipeType: null,
     SporePrint: null,
-    Ecology: null
+    Ecology: null,
+    results: null
   };
 
   async componentDidMount() {
@@ -32,7 +33,32 @@ class App extends React.Component {
         console.log(err);
       }
     }
-    console.log("mounting");
+    console.log(this.state.mushrooms);
+  }
+
+  filteringFunc = filters => {
+    this.setState({ stage: this.state.stage + 1 });
+    let { mushrooms } = this.state;
+    let {
+      CapType,
+      HymeniumSporeType,
+      HymeniumShapeType,
+      StipeType,
+      SporePrint,
+      Ecology
+    } = filters;
+    let counter = 0;
+    console.log(mushrooms);
+    let results = null;
+    return results;
+  };
+
+  async componentDidUpdate() {
+    let { stage } = this.state;
+    if (stage === 7) {
+      const results = this.filteringFunc(this.state);
+      this.setState({ results: results });
+    }
   }
 
   setOption = (type, option) => {
@@ -40,15 +66,11 @@ class App extends React.Component {
   };
 
   handleClick = (e, type, char) => {
-    console.log(type);
-    console.log(char);
     this.setState({ [type]: char, stage: this.state.stage + 1 });
   };
 
   render() {
-    console.log(this.state);
     let { stage } = this.state;
-    console.log(stage);
     if (stage === 0) {
       return (
         <React.Fragment>
@@ -75,9 +97,51 @@ class App extends React.Component {
           <h2
             value="CapType"
             className="id-button"
-            onClick={() => this.handleClick(null, "CapType", "Umbonate")}
+            onClick={() => this.handleClick(null, "CapType", "umbonate")}
           >
             Umbonate
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "convex")}
+          >
+            Convex
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "flat")}
+          >
+            Flat
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "conical")}
+          >
+            Conical
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "depressed")}
+          >
+            Depressed
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "capanulate")}
+          >
+            Capanulate
+          </h2>
+          <h2
+            value="CapType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "CapType", "infundibuliform")}
+          >
+            Infundibuliform
           </h2>
         </React.Fragment>
       );
@@ -86,7 +150,36 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <HymeniumSporeType />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="HymeniumSporeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "HymeniumSporeType", "gills")}
+          >
+            Gills
+          </h2>
+          <h2
+            value="HymeniumSporeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "HymeniumSporeType", "teeth")}
+          >
+            Teeth
+          </h2>
+          <h2
+            value="HymeniumSporeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "HymeniumSporeType", "pores")}
+          >
+            Pores
+          </h2>
+          <h2
+            value="HymeniumSporeType"
+            className="id-button"
+            onClick={() =>
+              this.handleClick(null, "HymeniumSporeType", "ridges")
+            }
+          >
+            Ridges
+          </h2>
         </React.Fragment>
       );
     }
@@ -94,7 +187,49 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <HymeniumShapeType />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="HymeniumShapeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "HymeniumShapeType", "free")}
+          >
+            Free
+          </h2>
+          <h2
+            value="HymeniumShapeType"
+            className="id-button"
+            onClick={() =>
+              this.handleClick(null, "HymeniumShapeType", "adnate")
+            }
+          >
+            Adnate
+          </h2>
+          <h2
+            value="HymeniumShapeType"
+            className="id-button"
+            onClick={() =>
+              this.handleClick(null, "HymeniumShapeType", "decurrent")
+            }
+          >
+            Decurrent
+          </h2>
+          <h2
+            value="HymeniumShapeType"
+            className="id-button"
+            onClick={() =>
+              this.handleClick(null, "HymeniumShapeType", "adnexed")
+            }
+          >
+            Adnexed
+          </h2>
+          <h2
+            value="HymeniumShapeType"
+            className="id-button"
+            onClick={() =>
+              this.handleClick(null, "HymeniumShapeType", "sinuate")
+            }
+          >
+            Sinuate
+          </h2>
         </React.Fragment>
       );
     }
@@ -102,7 +237,27 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <StipeType />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="StipeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "StipeType", "bare")}
+          >
+            Bare
+          </h2>
+          <h2
+            value="StipeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "StipeType", "ring")}
+          >
+            Ring
+          </h2>
+          <h2
+            value="StipeType"
+            className="id-button"
+            onClick={() => this.handleClick(null, "StipeType", "volva")}
+          >
+            Volva
+          </h2>
         </React.Fragment>
       );
     }
@@ -110,7 +265,69 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <SporePrint />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "white")}
+          >
+            White
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "yellow")}
+          >
+            Yellow
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "olive")}
+          >
+            Olive
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "tan")}
+          >
+            Tan
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "cream")}
+          >
+            Cream
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "brown")}
+          >
+            Brown
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "pink")}
+          >
+            Pink
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "purple")}
+          >
+            Purple
+          </h2>
+          <h2
+            value="SporePrint"
+            className="id-button"
+            onClick={() => this.handleClick(null, "SporePrint", "black")}
+          >
+            Black
+          </h2>
         </React.Fragment>
       );
     }
@@ -118,14 +335,25 @@ class App extends React.Component {
       return (
         <React.Fragment>
           <Ecology />
-          <button onClick={this.handleClick}>next option</button>
+          <h2
+            value="Ecology"
+            className="id-button"
+            onClick={() => this.handleClick(null, "Ecology", "mycorrhizal")}
+          >
+            Mycorrhizal
+          </h2>
+          <h2
+            value="Ecology"
+            className="id-button"
+            onClick={() => this.handleClick(null, "Ecology", "saprotrophic")}
+          >
+            Saprotrophic
+          </h2>
         </React.Fragment>
       );
     }
-    if (stage === 7) {
-      return (
-        <React.Fragment>{/* <Result results={results} /> */}</React.Fragment>
-      );
+    if (stage > 6) {
+      return <h1>results</h1>;
     }
   }
 }
